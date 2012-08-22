@@ -173,19 +173,27 @@ node /master/ {
   } -> Rz_model<| |>
 
   rz_model { 'precise_controller_os':
-    ensure      => present,
-    image       => 'ubuntu_precise',
-    metadata    => {'domainname' => 'puppetlabs.vm', 'hostname_prefix' => 'openstack-controller', 'rootpassword' => 'openstack' },
-    template    => 'ubuntu_precise_puppet',
-    tag         => ['os']
+    ensure   => present,
+    image    => 'ubuntu_precise',
+    metadata => {
+      'domainname'      => 'puppetlabs.vm',
+      'hostname_prefix' => 'openstack-controller',
+      'rootpassword'    => 'openstack'
+    },
+    template => 'ubuntu_precise_puppet',
+    tag      => ['os'],
   }
 
   rz_model { 'precise_compute_os':
-    ensure      => present,
-    image       => 'ubuntu_precise',
-    metadata    => {'domainname' => 'puppetlabs.vm', 'hostname_prefix' => 'openstack-compute', 'rootpassword' => 'openstack' },
-    template    => 'ubuntu_precise_puppet',
-    tag         => ['os']
+    ensure   => present,
+    image    => 'ubuntu_precise',
+    metadata => {
+      'domainname'      => 'puppetlabs.vm',
+      'hostname_prefix' => 'openstack-compute',
+      'rootpassword'    => 'openstack'
+    },
+    template => 'ubuntu_precise_puppet',
+    tag      => ['os'],
   }
 
   rz_policy { 'controller_os':
@@ -195,7 +203,7 @@ node /master/ {
     enabled  => true,
     tags     => ['memsize_500MiB'],
     template => 'linux_deploy',
-    tag      => ['os']
+    tag      => ['os'],
   }
 
   rz_policy { 'compute_os':
@@ -205,23 +213,31 @@ node /master/ {
     enabled  => true,
     tags     => ['memsize_2017MiB'],
     template => 'linux_deploy',
-    tag      => ['os']
+    tag      => ['os'],
   }
 
   rz_model { 'precise_controller_pe':
-    ensure      => present,
-    image       => 'ubuntu_precise',
-    metadata    => {'domainname' => 'puppetlabs.vm', 'hostname_prefix' => 'openstack-controller', 'rootpassword' => 'openstack' },
-    template    => 'ubuntu_precise_pe',
-    tag         => ['pe']
+    ensure   => present,
+    image    => 'ubuntu_precise',
+    metadata => {
+      'domainname'      => 'puppetlabs.vm',
+      'hostname_prefix' => 'openstack-controller',
+      'root_password'   => 'openstack',
+    },
+    template => 'ubuntu_precise_pe',
+    tag      => ['pe'],
   }
 
   rz_model { 'precise_compute_pe':
-    ensure      => present,
-    image       => 'ubuntu_precise',
-    metadata    => {'domainname' => 'puppetlabs.vm', 'hostname_prefix' => 'openstack-compute', 'rootpassword' => 'openstack' },
-    template    => 'ubuntu_precise_pe',
-    tag         => ['pe']
+    ensure   => present,
+    image    => 'ubuntu_precise',
+    metadata => {
+      'domainname'      => 'puppetlabs.vm',
+      'hostname_prefix' => 'openstack-compute',
+      'root_password'   => 'openstack'
+    },
+    template => 'ubuntu_precise_pe',
+    tag      => ['pe'],
   }
 
   rz_policy { 'controller_pe':
@@ -231,7 +247,7 @@ node /master/ {
     enabled  => true,
     tags     => ['memsize_500MiB'],
     template => 'linux_deploy',
-    tag      => ['pe']
+    tag      => ['pe'],
   }
 
   rz_policy { 'compute_pe':
@@ -241,6 +257,6 @@ node /master/ {
     enabled  => true,
     tags     => ['memsize_2017MiB'],
     template => 'linux_deploy',
-    tag      => ['pe']
+    tag      => ['pe'],
   }
 }

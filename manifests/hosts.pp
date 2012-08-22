@@ -1,5 +1,5 @@
 #
-# This puppet manifest is already applied first to do some environment specific things
+# This puppet manifest is applied first to do some environment specific things
 #
 
 #
